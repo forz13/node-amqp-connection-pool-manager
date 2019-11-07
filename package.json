@@ -1,0 +1,23 @@
+{
+  "name": "node-amqp-connection-pool-manager",
+  "version": "0.1.0",
+  "description": "Wrapper for amqp-connection-manager that manages pool of amqp connections",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forz13/node-amqp-connection-pool-manager.git"
+  },
+  "keywords": [
+    "amqp",
+    "rabbitmq"
+  ],
+  "author": "forz13",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/forz13/node-amqp-connection-pool-manager/issues"
+  },
+  "homepage": "https://github.com/forz13/node-amqp-connection-pool-manager#readme"
+}
