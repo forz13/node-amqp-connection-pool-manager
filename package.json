@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/forz13/node-amqp-connection-pool-manager/issues"
   },
-  "homepage": "https://github.com/forz13/node-amqp-connection-pool-manager#readme"
+  "homepage": "https://github.com/forz13/node-amqp-connection-pool-manager#readme",
+  "dependencies": {
+    "amqp-connection-manager": "^3.0.0"
+  }
 }
