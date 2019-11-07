@@ -1,0 +1,1 @@
+# node-amqp-connection-pool-manager
