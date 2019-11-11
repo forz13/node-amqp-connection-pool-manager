@@ -6,6 +6,8 @@ export default class AmqpConnectionManager {
      *
      * @param {array} urls
      * @param {object} options
+     * @param {number} options.heartbeatIntervalInSeconds
+     * @param {number} options.reconnectTimeInSeconds
      */
     constructor(urls, options) {
         this._urls = urls;
