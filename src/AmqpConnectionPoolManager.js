@@ -1,7 +1,8 @@
+const EventEmitter = require('events');
 const AmqpConnectionManager = require('./AmqpConnectionManager');
 const helpers = require('./helpers');
 
-export default class AmqpConnectionPoolManager {
+export default class AmqpConnectionPoolManager extends EventEmitter {
 
     /**
      *
@@ -17,6 +18,7 @@ export default class AmqpConnectionPoolManager {
      * @param {number} senderPoolSize
      */
     constructor(connectionOptions, consumerPoolSize, senderPoolSize) {
+        super();
         this._consumerPoolSize = consumerPoolSize;
         this._senderPoolSize = senderPoolSize;
         this._consumerPool = [];
@@ -56,8 +58,14 @@ export default class AmqpConnectionPoolManager {
             this._senderPool.push(sender);
         }
 
-        this._consumerPool.map(async connection => await connection.connect());
-        this._senderPool.map(async connection => await connection.connect());
+        this._consumerPool.map(async connection => {
+            await connection.connect();
+            this._connectionEventHandler(connection);
+        });
+        this._senderPool.map(async connection => {
+            await connection.connect();
+            this._connectionEventHandler(connection);
+        });
     }
 
     /**
@@ -95,5 +103,14 @@ export default class AmqpConnectionPoolManager {
             reconnectTimeInSeconds: connectionOptions.reconnectTimeInSeconds,
         }
 
+    }
+
+    /**
+     *
+     * @private
+     */
+    _connectionEventHandler(connection) {
+        connection.on('connect', () => emit('connect'));
+        connection.on('disconnect', err => emit('disconnect', err));
     }
 }
