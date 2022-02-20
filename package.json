@@ -4,7 +4,12 @@
   "description": "Wrapper for amqp-connection-manager that manages pool of amqp connections",
   "main": "lib/index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm test",
+    "audit": "npm audit"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">5.0.0"
   },
   "repository": {
     "type": "git",
@@ -21,6 +26,11 @@
   },
   "homepage": "https://github.com/forz13/node-amqp-connection-pool-manager#readme",
   "dependencies": {
-    "amqp-connection-manager": "^3.0.0"
+    "amqp-connection-manager": "^4.1.1",
+    "eslint-plugin-import": "^2.25.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0"
   }
 }

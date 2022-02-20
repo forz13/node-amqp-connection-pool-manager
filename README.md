@@ -11,3 +11,9 @@ Wrapper for amqp-connection-manager that manages pool of amqp connections
 
 ## Basics
 
+    const pool = require('amqp-connection-pool-manager');
+    const amqp = pool.create([], {}, 2,2);
+    await amqp.open();
+    const senderConnection = amqp.senderConnection;
+    const consumerConnection = amqp.consumerConnection;
+

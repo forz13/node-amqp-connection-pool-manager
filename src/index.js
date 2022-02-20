@@ -1,11 +1,17 @@
 const AmqpConnectionPoolManager = require('./AmqpConnectionPoolManager');
 
-export function connect(urls, options) {
-    return new AmqpConnectionPoolManager(urls, options);
+/**
+ * @param  urls
+ * @param {object} options
+ * @param {number} consumerPoolSize
+ * @param {number} senderPoolSize
+ */
+function create(urls, options, consumerPoolSize, senderPoolSize) {
+  return new AmqpConnectionPoolManager(urls, options, consumerPoolSize, senderPoolSize);
 }
 
-const amqp = {
-    connect
+const pool = {
+  create,
 };
 
-export default amqp;
+export default pool;
